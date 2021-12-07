@@ -11,12 +11,16 @@
 					<div class="card-body">
 						<h3>{{$produk->nama}}</h1>
 						<hr>
-						<p>Rp. {{number_format($produk->harga)}} |
+						<p>{{$produk->harga}} |
 							Stok : {{$produk->stok}} |
 							Berat : {{$produk->berat}} gr |
-							Seller : {{$produk->seller->username}}
+							Seller : {{$produk->seller->username}} |
+							Tanggal Produk : {{$produk->created_at->format("d M Y")}}
 						</p>
 							{!!$produk->deskripsi!!}
+						<p>
+							<img style="width: 40%; margin-left: 35px" src="{{url("public/$produk->foto")}}" alt="{{$produk->foto}}" class="img-fluid">
+						</p>
 					</div>
 				</div>
 			</div>

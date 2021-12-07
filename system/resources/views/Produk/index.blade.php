@@ -1,3 +1,5 @@
+@inject('timeService', 'App\Services\TimeServices')
+
 @extends('template.base')
 
 @section('content')
@@ -7,8 +9,10 @@
 			<div class="col-md-12 mt-3">
 				<div class="card">
 					<div class="card-header">
+						<div class="float-right">
+						Jam : {{$timeService->showTimeNow()}}
+						</div>
 						Filter
-					</div>
 				</div>
 			</div>
 				<div class="card-body">
@@ -40,39 +44,40 @@
 					</form>
 				</div>
 			</div>
+			<div class="col-md-12">
 				<div class="card">
-					<div class="card-header">
-						Data Produk
-						<a href="{{url('admin/produk/create')}}" class="btn btn-dark float-right"><i class="fa fa-plus"><b style="font-family: Courier; font-size: 10pt;"> Tambah Data</b></i></a>
-					</div>
-					<div class="card-body" style="margin-top: -20px;">
-						<div class="col-md-12">
-						<table class="table table-datatable">
-							<thead>
-								<th>No</th>
-								<th width="200px">Aksi</th>
-								<th>Nama</th>
-								<th>Harga</th>
-								<th>stok</th>
-							</thead>
-							<tbody>
-								@foreach($list_produk as $produk)
-								<tr>
-									<td>{{$loop->iteration}}</td>
-									<td>
-										<div class="btn-group">
-										<a href="{{url('admin/produk', $produk->id)}}" class="btn btn-dark"><i class="fa fa-info"></i></a>
-										<a href="{{url('admin/produk', $produk->id)}}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-										@include('template.utils.delete', ['url' => url('admin/produk', $produk->id)])
-									</div>
-									</td>
-									<td>{{$produk->nama}}</td>
-									<td>{{$produk->harga}}</td>
-									<td>{{$produk->stok}}</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
+						<div class="card-header">
+							Data Produk
+							<a href="{{url('admin/produk/create')}}" class="btn btn-dark float-right"><i class="fa fa-plus"><b style="font-family: Courier; font-size: 10pt;"> Tambah Data</b></i></a>
+						</div>
+						<div class="card-body">
+							<table class="table table-datatable">
+								<thead>
+									<th>No</th>
+									<th width="200px">Aksi</th>
+									<th>Nama</th>
+									<th>Harga</th>
+									<th>Stok</th>
+								</thead>
+								<tbody>
+									@foreach($list_produk as $produk)
+									<tr>
+										<td>{{$loop->iteration}}</td>
+										<td>
+											<div class="btn-group">
+											<a href="{{url('admin/produk', $produk->id)}}" class="btn btn-dark"><i class="fa fa-info"></i></a>
+											<a href="{{url('admin/produk', $produk->id)}}/edit" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+											@include('template.utils.delete', ['url' => url('admin/produk', $produk->id)])
+										</div>
+										</td>
+										<td>{{$produk->nama}}</td>
+										<td>{{$produk->harga}}</td>
+										<td>{{$produk->stok}}</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
