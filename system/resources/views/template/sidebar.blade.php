@@ -19,6 +19,10 @@
           <a href="{{url('Admin/profil')}}" class="d-block">
             @if(Auth::check())
                 {{request()->user()->nama}}
+            @elseif(Auth::guard('pembeli')->check())
+               {{Auth::guard('pembeli')->user()->nama}}
+            @elseif(Auth::guard('penjual')->check())
+               {{Auth::guard('penjual')->user()->nama}}
             @else
                 Silahkan Login
             @endif
@@ -74,6 +78,32 @@
               </p>
             </a>
           </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Master Data
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Pelanggan</p>
+                </a>
+              </li>
+            </ul>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Supplier</p>
+                </a>
+              </li>
+            </ul>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

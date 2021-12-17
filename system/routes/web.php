@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,14 +59,27 @@ Route::get('home', function () {
 });
 
 Route::get('dashboard', [HomeController::class, 'showDashboard']);
+Route::get('dashboard/{status}', [HomeController::class, 'showDashboard']);
 Route::get('kategori', [HomeController::class, 'showKategori']);
 
 Route::prefix('admin')->group(function(){
     Route::post('produk/filter', [ProdukController::class, 'filter']);
     Route::resource('produk', ProdukController::class);
+    Route::resource('kategori', KategoriController::class);
     Route::resource('user', UserController::class);
 });
+
+//Client
+Route::get('home', [ClientController::class, 'showHome']);
+Route::post('home/filter', [ClientController::class, 'filter']);
+Route::get('produk/{produk}', [ClientController::class, 'showProduk']);
+Route::get('about', [ClientController::class, 'showAbout']);
+Route::get('furniture', [ClientController::class, 'showFurniture']);
+Route::get('contact', [ClientController::class, 'showContact']);
+Route::get('pesan', [ClientController::class, 'Pesan']);
 
 Route::get('login', [AuthController::class, 'showLogin']);
 Route::post('login', [AuthController::class, 'loginProcess']);
 Route::get('logout', [Authcontroller::class, 'logout']);
+
+Route::get('test-ajax', [HomeController::class, 'testAjax']);

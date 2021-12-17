@@ -204,124 +204,31 @@
         </p>
       </div>
       <div class="row">
+        @foreach($list_produk as $produk)
         <div class="col-md-6 col-lg-4">
           <div class="box">
             <div class="img-box">
-              <img src="{{ url('public/tugasmai') }}/images/f1.png" alt="">
+              <img style="width: 100%;" src="{{url("public/$produk->foto")}}" alt="{{$produk->foto}}" class="img-fluid">
             </div>
             <div class="detail-box">
               <h5>
-                brown Chair Design
+                {{$produk->nama}}
               </h5>
               <div class="price_box">
                 <h6 class="price_heading">
-                  <span>$</span> 100.00
+                  <span>{{$produk->harga}}</span>
                 </h6>
-                <a href="">
+                <a href="{{url('produk', $produk->id)}}">
                   Buy Now
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="{{ url('public/tugasmai') }}/images/f2.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Double Bed Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 200.00
-                </h6>
-                <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="{{ url('public/tugasmai') }}/images/f3.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                House Chair Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 200.00
-                </h6>
-                <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="{{ url('public/tugasmai') }}/images/f4.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                brown Table Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 100.00
-                </h6>
-                <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="{{ url('public/tugasmai') }}/images/f5.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Blue Chair Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 200.00
-                </h6>
-                <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="box">
-            <div class="img-box">
-              <img src="{{ url('public/tugasmai') }}/images/f6.png" alt="">
-            </div>
-            <div class="detail-box">
-              <h5>
-                Brown Table Design
-              </h5>
-              <div class="price_box">
-                <h6 class="price_heading">
-                  <span>$</span> 200.00
-                </h6>
-                <a href="">
-                  Buy Now
-                </a>
-              </div>
-            </div>
+        @endforeach
+        <div class="col-md-12 mt-4" style="margin-left: 500px;">
+          <div class="row">
+            {!! $list_produk->links() !!}
           </div>
         </div>
       </div>

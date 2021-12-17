@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Provinsi;
+
 class HomeController extends Controller{
 
 	function showDashboard()
@@ -14,5 +16,9 @@ class HomeController extends Controller{
 	return view('category');
 	}
 
+	function testAjax(){
+		$data['list_provinsi'] = Provinsi::all();
+		return view('test-ajax', $data);
+	}
 }
  
