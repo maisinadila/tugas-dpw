@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 /*
@@ -61,6 +62,9 @@ Route::get('home', function () {
 Route::get('dashboard', [HomeController::class, 'showDashboard']);
 Route::get('dashboard/{status}', [HomeController::class, 'showDashboard']);
 Route::get('kategori', [HomeController::class, 'showKategori']);
+
+Route::get('setting', [SettingController::class, 'index']);
+Route::post('setting', [SettingController::class, 'store']);
 
 Route::prefix('admin')->group(function(){
     Route::post('produk/filter', [ProdukController::class, 'filter']);

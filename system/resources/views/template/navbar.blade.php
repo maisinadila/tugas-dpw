@@ -94,12 +94,11 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="{{url('Profil Akun')}}" class="dropdown-item">
             <i class="fas fa-id-card-alt"></i> Profil Akun
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="login" class="dropdown-item">
-            <i class="fas fa-sign-in-alt"></i> Login
+          <a href="{{url('setting')}}" class="dropdown-item">
+            <i class="fas fa-user-cog"></i> Setting
           </a>
           <div class="dropdown-divider"></div>
           <a href="{{url('logout')}}" class="dropdown-item">

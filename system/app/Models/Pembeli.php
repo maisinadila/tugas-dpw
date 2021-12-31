@@ -60,4 +60,8 @@ class Pembeli extends Authenticatable
     function setPasswordAttribute($value){
         $this->attributes['password'] = bcrypt($value);
     }
+
+    function setUsernameAttribute ($value){
+        $this->attributes['username'] = strtolower($value);
+    }
 }
